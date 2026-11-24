@@ -7,7 +7,7 @@
 
 ## Публікація на GitHub Pages
 ```bash
-git remote add origin https://github.com/saadhorus/git-teamwork-course.git
+git remote add origin https://github.com/vshpak-kubg/git-teamwork-course.git
 git push -u origin main
 ```
 Після пушу у налаштуваннях репозиторію увімкніть `Settings -> Pages -> Source: Deploy from a branch (main / root)`.
