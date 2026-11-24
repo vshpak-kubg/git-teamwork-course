@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Основи Git та командної розробки для студентів ІТ</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="topbar">
+  <div>
+    <h1>Основи Git та командної розробки для студентів ІТ</h1>
+    <div class="sub">Інноваційний електронний курс • 3 модулі • 12 годин • Мікронавчання + Практикум + ШІ-підтримка</div>
+  </div>
+  <div class="hud">
+    <span>Рівень: <strong id="hud-level">2. Розробник</strong></span>
+    <span class="pill"><span id="hud-xp">140</span> XP</span>
+    <span>Прогрес: <strong id="hud-pct">45%</strong></span>
+  </div>
+</header>
+<div class="progress-strip"><div class="progress-fill" id="progress-fill" style="width:45%"></div></div>
+
+<nav class="nav" role="navigation" aria-label="Навігація курсу">
+  <button data-tab="home" class="active">Головна</button>
+  <button data-tab="entry">Вступ і діагностика</button>
+  <button data-tab="mod1">Модуль 1. Основи Git</button>
+  <button data-tab="mod2">Модуль 2. Інтерактивний практикум</button>
+  <button data-tab="mod3">Модуль 3. Співпраця та ШІ</button>
+  <button data-tab="gamification">Гейміфікація і місії</button>
+  <button data-tab="ai_assistant">ШІ-помічник GitMentor</button>
+  <button data-tab="assessment">Оцінювання й аналітика</button>
+</nav>
+
+<main>
+  <!-- 1. HOME -->
+  <section id="tab-home" class="panel active">
+    <div class="breadcrumbs">Курс / Головна сторінка</div>
+    <div class="card">
+      <h2>Ласкаво просимо на курс «Основи Git та командної розробки»</h2>
+      <p>Курс створений для студентів 1–2 курсів ІТ-спеціальностей, які вже пишуть код, але потребують системної практики роботи з репозиторіями, гілками, конфліктами злиття та Pull Request у команді.</p>
+      <div class="alert alert-info">
+        <strong>Швидкий старт (як проходити курс):</strong> 1) Пройдіть короткий вхідний тест (3 хв) для підбору темпу; 2) Послідовно виконайте Модулі 1–3 та інтерактивні місії; 3) Виконайте підсумковий кейс із рубрикою (мінімум 60 зі 100 балів). За потреби звертайтеся до вбудованого ШІ-помічника GitMentor.
+      </div>
+      <div class="grid-3">
+        <div class="box">
+          <div class="tag">Модуль 1 • 3 год</div>
+          <h3>Базовий цикл Git</h3>
+          <p>Створення репозиторію, індексація змін, змістовні коміти, <code>.gitignore</code> та перегляд історії.</p>
+          <button class="btn btn-sm" onclick="switchTab('mod1')">Відкрити модуль</button>
+        </div>
+        <div class="box">
+          <div class="tag">Модуль 2 • 4 год</div>
+          <h3>Гілки, злиття й конфлікти</h3>
+          <p>Інтерактивна схема станів, симулятор термінала Git, розгалужений кейс розв'язання конфлікту.</p>
+          <button class="btn btn-sm" onclick="switchTab('mod2')">Відкрити практикум</button>
+        </div>
+        <div class="box">
+          <div class="tag">Модуль 3 • 5 год</div>
+          <h3>GitHub, Code Review та ШІ</h3>
+          <p>Парна взаємодія у Pull Request, активність діагностики історії з ШІ, підсумковий командний кейс.</p>
+          <button class="btn btn-sm" onclick="switchTab('mod3')">Відкрити модуль</button>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <h2>Очікувані результати навчання та умови завершення</h2>
+      <ul>
+        <li>Організовувати локальний репозиторій, фіксувати зміни та відсікати службові файли через <code>.gitignore</code>.</li>
+        <li>Застосовувати гілкування і злиття для паралельної розробки без втрати коду.</li>
+        <li>Діагностувати та коректно розв'язувати конфлікти злиття (merge conflicts).</li>
+        <li>Проводити командну взаємодію на GitHub: створювати Pull Request, давати конструктивний Code Review.</li>
+        <li>Критично перевіряти поради генеративного ШІ при розв'язанні робочих ситуацій у Git.</li>
+      </ul>
+      <p><strong>Умови зарахування:</strong> завершення всіх 3 модулів, участь у парному Code Review та набір не менше 60 балів зі 100 за підсумковою системою оцінювання.</p>
+    </div>
+  </section>
+
+  <!-- 2. ENTRY DIAGNOSTIC -->
+  <section id="tab-entry" class="panel">
+    <div class="breadcrumbs">Курс / Вступний модуль і діагностика</div>
+    <div class="card">
+      <h2>Вхідне діагностування (визначення навчального маршруту)</h2>
+      <p>Дайте відповідь на 5 коротких запитань. За результатом система підбере рекомендований маршрут: базовий (із додатковим тренажером термінала), стандартний або поглиблений.</p>
+      <div id="entry-quiz">
+        <div class="q-block">
+          <strong>1. Яка команда створює новий локальний Git-репозиторій?</strong>
+          <label><input type="radio" name="eq1" value="1"> git init</label>
+          <label><input type="radio" name="eq1" value="0"> git start</label>
+          <label><input type="radio" name="eq1" value="0"> git push</label>
+        </div>
+        <div class="q-block">
+          <strong>2. Що робить команда git add?</strong>
+          <label><input type="radio" name="eq2" value="0"> Одразу відправляє код на GitHub</label>
+          <label><input type="radio" name="eq2" value="1"> Додає зміни до індексу (Staging Area) перед комітом</label>
+          <label><input type="radio" name="eq2" value="0"> Видаляє поточну гілку</label>
+        </div>
+        <div class="q-block">
+          <strong>3. Для чого використовують файл .gitignore?</strong>
+          <label><input type="radio" name="eq3" value="1"> Щоб виключити тимчасові файли, логи й залежності з відстеження Git</label>
+          <label><input type="radio" name="eq3" value="0"> Щоб зберігати паролі бази даних</label>
+        </div>
+        <div class="q-block">
+          <strong>4. Коли виникає merge conflict?</strong>
+          <label><input type="radio" name="eq4" value="1"> Коли дві гілки по-різному змінили одні й ті самі рядки одного файлу</label>
+          <label><input type="radio" name="eq4" value="0"> Коли відсутній інтернет</label>
+        </div>
+        <div class="q-block">
+          <strong>5. Для чого потрібен Pull Request на GitHub?</strong>
+          <label><input type="radio" name="eq5" value="1"> Для перевірки коду командою (Code Review) перед злиттям у головну гілку</label>
+          <label><input type="radio" name="eq5" value="0"> Для форматування жорсткого диска</label>
+        </div>
+      </div>
+      <div style="margin-top:12px; display:flex; gap:10px;">
+        <button class="btn" onclick="gradeEntry()">Перевірити та визначити маршрут</button>
+        <button class="btn btn-outline" onclick="simulateEntry(1)">Демо: результат 20% (базовий)</button>
+        <button class="btn btn-outline" onclick="simulateEntry(5)">Демо: результат 100% (поглиблений)</button>
+      </div>
+      <div id="entry-result"></div>
+    </div>
+  </section>
+
+  <!-- 3. MODULE 1 -->
+  <section id="tab-mod1" class="panel">
+    <div class="breadcrumbs">Курс / Модуль 1. Базовий цикл Git</div>
+    <div class="card">
+      <h2>Модуль 1. Базовий цикл Git і локальна історія</h2>
+      <p><strong>Мета модуля:</strong> навчитися створювати репозиторій, контролювати стан файлів, оформлювати зрозумілі коміти та налаштовувати <code>.gitignore</code>.</p>
+      <div class="grid-2">
+        <div class="box">
+          <h3>Мікроурок 1.1. Основні команди</h3>
+          <pre>git init -b main
+git status
+git add src/app.js
+git commit -m "Add input validation"
+git log --oneline -n 5</pre>
+        </div>
+        <div class="box">
+          <h3>Мікроурок 1.2. Типовий .gitignore</h3>
+          <pre>node_modules/
+__pycache__/
+*.log
+.env
+dist/</pre>
+          <p style="font-size:13px;color:var(--muted);">Порада: ніколи не комітьте файл <code>.env</code> із ключами чи паролями.</p>
+        </div>
+      </div>
+      <div class="alert alert-ok">
+        <strong>Місія 1 (+50 XP):</strong> створіть локальний репозиторій, додайте <code>.gitignore</code>, зробіть 3 логічно розділені коміти й перевірте історію через <code>git log --stat</code>.
+      </div>
+      <button class="btn btn-teal" onclick="completeMission(1); switchTab('mod2')">Завершити Модуль 1 і перейти до Модуля 2 →</button>
+    </div>
+  </section>
+
+  <!-- 4. MODULE 2 (PR 7: Interactive content with 4 elements!) -->
+  <section id="tab-mod2" class="panel">
+    <div class="breadcrumbs">Курс / Модуль 2. Гілкування, злиття та інтерактивний практикум</div>
+    <div class="card">
+      <h2>Інтерактивний практикум Модуля 2 (4 активні елементи)</h2>
+      <p><strong>Інструкція для учасника:</strong> послідовно опрацюйте інтерактивну схему станів, виконайте 4 команди в міні-симуляторі термінала, розв'яжіть розгалужений кейс конфлікту злиття та пройдіть вправу на відповідність.</p>
+
+      <h3>Елемент 1. Інтерактивна схема руху змін у Git (натисніть на етап)</h3>
+      <div class="state-flow">
+        <div class="state-node selected" onclick="selectState(0, this)"><strong>1. Working Tree</strong><div style="font-size:12px;color:#475569;">Робочі файли</div></div>
+        <div class="state-node" onclick="selectState(1, this)"><strong>2. Staging Area</strong><div style="font-size:12px;color:#475569;">Індекс (git add)</div></div>
+        <div class="state-node" onclick="selectState(2, this)"><strong>3. Local Repo</strong><div style="font-size:12px;color:#475569;">Історія (git commit)</div></div>
+        <div class="state-node" onclick="selectState(3, this)"><strong>4. Remote (GitHub)</strong><div style="font-size:12px;color:#475569;">Сервер (git push)</div></div>
+      </div>
+      <div id="state-desc" class="alert alert-info">
+        <strong>Working Tree:</strong> каталог із вашими поточними файлами на диску. Команда <code>git status</code> показує змінені та невідстежувані файли.
+      </div>
+
+      <h3>Елемент 2. Симулятор командного рядка Git (крок за кроком)</h3>
+      <p id="sim-task" style="font-weight:600;color:var(--primary);">Крок 1 з 3: створіть і перейдіть на нову гілку <code>feature/login</code> (команда <code>git checkout -b feature/login</code> або <code>git switch -c feature/login</code>).</p>
+      <div class="terminal">
+        <div class="terminal-log" id="sim-log">student@lab:~/project (main)$ # Введіть команду Git нижче або скористайтесь підказкою</div>
+        <div class="terminal-input-row">
+          <span>$</span>
+          <input id="sim-input" type="text" placeholder="Введіть команду Git..." onkeydown="if(event.key==='Enter') runSim()">
+          <button class="btn btn-teal btn-sm" onclick="runSim()">Виконати</button>
+          <button class="btn btn-outline btn-sm" style="background:#1e293b;color:#cbd5e1;border-color:#475569;" onclick="simHint()">Підказка</button>
+        </div>
+      </div>
+      <div id="sim-feedback"></div>
+
+      <h3>Елемент 3. Розгалужений кейс: конфлікт у файлі config.json</h3>
+      <pre>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD (main)
+  "port": 8080, "version": "1.1.0"
+=======
+  "port": 8081, "version": "1.2.0"
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; feature/api-update</pre>
+      <p>Команда домовилася залишити порт <code>8080</code> для сумісності з сервером, але підняти версію до <code>1.2.0</code>. Оберіть правильну дію:</p>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;">
+        <button class="btn btn-outline btn-sm" onclick="resolveConflict('a')">А) Залишити маркери &lt;&lt;&lt;&lt; і зробити git commit</button>
+        <button class="btn btn-outline btn-sm" onclick="resolveConflict('b')">Б) Вручну об'єднати в port: 8080, version: 1.2.0, прибрати маркери, виконати git add і git commit</button>
+        <button class="btn btn-outline btn-sm" onclick="resolveConflict('c')">В) Видалити файл config.json і зробити git push --force</button>
+      </div>
+      <div id="conflict-feedback"></div>
+
+      <h3>Елемент 4. Вправа на відповідність команд</h3>
+      <table>
+        <thead><tr><th>Робоча ситуація</th><th>Оберіть команду</th></tr></thead>
+        <tbody>
+          <tr><td>Переглянути компактний граф усіх гілок</td><td><select id="m-q1"><option value="">-- оберіть --</option><option value="1">git log --graph --oneline --all</option><option value="0">git init</option><option value="0">git rm</option></select></td></tr>
+          <tr><td>Злити гілку feature у поточну гілку main</td><td><select id="m-q2"><option value="">-- оберіть --</option><option value="0">git clone feature</option><option value="1">git merge feature</option><option value="0">git status feature</option></select></td></tr>
+          <tr><td>Скасувати додавання файлу в індекс без втрати змін</td><td><select id="m-q3"><option value="">-- оберіть --</option><option value="1">git restore --staged file.js</option><option value="0">git rm -f file.js</option><option value="0">git push -f</option></select></td></tr>
+        </tbody>
+      </table>
+      <button class="btn btn-sm" onclick="checkMatching()">Перевірити вправу</button>
+      <div id="match-feedback"></div>
+    </div>
+  </section>
+
+  <!-- 5. MODULE 3: COLLABORATION (PR 8) + AI ACTIVITY (PR 10) -->
+  <section id="tab-mod3" class="panel">
+    <div class="breadcrumbs">Курс / Модуль 3. Онлайн-співпраця та ШІ-активність</div>
+    <div class="card">
+      <h2>Онлайн-взаємодія: парний практикум «Pull Request і Code Review»</h2>
+      <p><strong>Формат:</strong> асинхронна робота в парах у спільному GitHub-репозиторії (термін — 5 днів). <strong>Ролі:</strong> Автор змін (готує гілку й PR) та Рев'юер (перевіряє код і залишає аргументовані коментарі). Потім ролі змінюються.</p>
+      <ol>
+        <li>Учасник А створює гілку <code>feature/calc-module</code>, додає функцію з 2 навмисними недоліками та відкриває Pull Request.</li>
+        <li>Учасник Б перевіряє PR у вкладці <em>Files changed</em> і залишає щонайменше 2 предметні коментарі (помилка логіки + стиль/читабельність).</li>
+        <li>Учасник А вносить виправлення новим комітом у ту саму гілку і відповідає на кожен коментар.</li>
+        <li>Учасник Б підтверджує зміни (<em>Approve</em>) і виконує <em>Merge</em>.</li>
+      </ol>
+      <p><strong>Зворотний зв'язок (2 способи):</strong> 1) взаємооцінювання за чеклістом нижче; 2) підсумковий коментар викладача до об'єднаного PR.</p>
+      <div class="box">
+        <h3>Інтерактивна картка взаємооцінювання Pull Request</h3>
+        <label><input type="checkbox" class="pr-chk" checked> Назва та опис PR чітко пояснюють мету змін (2 б.)</label><br>
+        <label><input type="checkbox" class="pr-chk" checked> Коміти атомарні, без сміттєвих файлів (2 б.)</label><br>
+        <label><input type="checkbox" class="pr-chk" checked> Рев'юер залишив конструктивні зауваження без оціночних суджень щодо особи (3 б.)</label><br>
+        <label><input type="checkbox" class="pr-chk"> Усі зауваження опрацьовано до злиття (3 б.)</label>
+        <div style="margin-top:8px;">
+          <textarea id="peer-comment" rows="2" style="width:100%;padding:6px;font-family:inherit;" placeholder="Введіть конструктивний відгук партнеру...">Опис PR зрозумілий. Рекомендую винести перевірку ділення на нуль перед обчисленням і додати тест у tests/.</textarea>
+          <button class="btn btn-teal btn-sm" style="margin-top:6px;" onclick="savePeerReview()">Зберегти взаємооцінювання (+60 XP)</button>
+        </div>
+        <div id="peer-result"></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Навчальна активність із підтримкою ШІ: «Розбір інциденту в історії Git»</h2>
+      <p><strong>Роль ШІ:</strong> спаринг-партнер для аналізу варіантів відновлення історії, який пояснює ризики команд (<code>reset</code> vs <code>revert</code>), але <strong>не виконує завдання замість студента</strong>.</p>
+      <p><strong>Сценарій:</strong> розробник випадково закомітив і запушив у спільну гілку <code>main</code> помилкову конфігурацію. Використайте послідовність із 4 запитів до ШІ, перевірте його рекомендації за офіційною документацією <code>git-scm.com</code> і сформулюйте власне рішення:</p>
+      <ol>
+        <li><em>Уточнення проблеми:</em> «Я запушив помилковий коміт у спільну гілку main, з якої вже працюють двоє колег. Які ризики виникнуть, якщо я використаю git reset --hard і git push --force?»</li>
+        <li><em>Отримання варіантів:</em> «Запропонуй 2 безпечні способи відкотити зміни в публічній гілці без перезапису спільної історії. Для кожного вкажи команду й результат у графі комітів.»</li>
+        <li><em>Перевірка достовірності:</em> «Наведи точні прапори команди git revert з офіційної документації Git для скасування merge-коміту та поясни параметр -m 1.»</li>
+        <li><em>Самостійний висновок:</em> на основі порівняння студент обирає стратегію для свого кейсу, перевіряє її на тестовому репозиторії та здає звіт із поясненням.</li>
+      </ol>
+      <div class="alert alert-warn">
+        <strong>Правила доброчесності та безпеки:</strong> 1) Заборонено вводити у ШІ реальні токени, паролі, приватні ключі SSH або персональні дані; 2) Обов'язково вказати використаний ШІ-інструмент; 3) Кожну команду з відповіді ШІ перевірити за <code>git help</code> або <code>git-scm.com</code>.
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. GAMIFICATION (PR 9) -->
+  <section id="tab-gamification" class="panel">
+    <div class="breadcrumbs">Курс / Гейміфікація: сюжет «Перший реліз у команді»</div>
+    <div class="card">
+      <h2>Ігрова система прогресу (4 взаємопов'язані механіки)</h2>
+      <p>Учасник проходить курс у ролі молодшого розробника, якому потрібно підготувати перший командний реліз без втрати коду. Бали та відзнаки прив'язані до реальних навчальних дій, без токсичного публічного рейтингу.</p>
+      <div class="grid-2">
+        <div class="box">
+          <h3>Поточний статус учасника</h3>
+          <p>Набрано: <strong id="gam-xp">140 XP</strong> / 350 XP</p>
+          <p>Поточний рівень: <strong id="gam-lvl">Рівень 2 — Розробник</strong></p>
+          <p style="font-size:13px;color:var(--muted);">Шкала рівнів: 0–99 XP Стажер • 100–199 XP Розробник • 200–299 XP Командний гравець • 300+ XP Мейнтейнер</p>
+        </div>
+        <div class="box">
+          <h3>Активні місії сюжету</h3>
+          <ul style="margin:6px 0 0 18px;font-size:13.5px;">
+            <li id="mis-1"><strong>[Виконано]</strong> Місія 1: Перший чистий репозиторій (+50 XP)</li>
+            <li id="mis-2"><strong>[Виконано]</strong> Місія 2: Безпечне злиття без паніки (+90 XP)</li>
+            <li id="mis-3"><strong>[У процесі]</strong> Місія 3: Конструктивний Code Review (+60 XP)</li>
+            <li id="mis-4"><strong>[Очікує]</strong> Місія 4: Реліз v1.0 і підсумковий кейс (+150 XP)</li>
+          </ul>
+        </div>
+      </div>
+      <h3>Колекція навчальних відзнак</h3>
+      <div class="badge-grid">
+        <div class="badge-item earned" id="b-init"><div class="badge-icon">01</div><strong>Перший коміт</strong><div>Чистий старт у Git</div></div>
+        <div class="badge-item earned" id="b-branch"><div class="badge-icon">02</div><strong>Майстер гілок</strong><div>Пройдено симулятор</div></div>
+        <div class="badge-item" id="b-conflict"><div class="badge-icon">03</div><strong>Миротворець</strong><div>Розв'язано конфлікт</div></div>
+        <div class="badge-item" id="b-review"><div class="badge-icon">04</div><strong>Уважний рев'юер</strong><div>Парний Code Review</div></div>
+        <div class="badge-item" id="b-ai"><div class="badge-icon">05</div><strong>Критичний мислитель</strong><div>Перевірка порад ШІ</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. AI ASSISTANT PROTOTYPE (PR 11) -->
+  <section id="tab-ai_assistant" class="panel">
+    <div class="breadcrumbs">Курс / ШІ-помічник курсу «GitMentor»</div>
+    <div class="card">
+      <h2>Прототип ШІ-помічника «GitMentor»</h2>
+      <p><strong>Призначення:</strong> пояснювати поняття Git, давати покрокові підказки та навідні запитання за матеріалами курсу, не виконуючи практичні завдання замість студента. <em>Увага: відповіді помічника потребують перевірки за документацією; не вводьте приватні ключі чи паролі.</em></p>
+      <div class="prompt-chips">
+        <button class="chip" onclick="askMentor('typ')">1. Типовий: Чим відрізняється git merge від git rebase?</button>
+        <button class="chip" onclick="askMentor('hint')">2. Підказка: Як безпечно скасувати останній локальний коміт?</button>
+        <button class="chip" onclick="askMentor('ambig')">3. Неточний: У мене щось зламалось у гіті, допоможи</button>
+        <button class="chip" onclick="askMentor('off')">4. Поза темою: Напиши рецепт борщу</button>
+        <button class="chip" onclick="askMentor('cheat')">5. Готова відповідь: Зроби замість мене підсумковий проєкт</button>
+      </div>
+      <div class="chat-box" id="mentor-chat">
+        <div class="msg bot"><strong>GitMentor:</strong> Вітаю! Я помічник курсу «Основи Git та командної розробки». Можу пояснити команди, розібрати типову помилку або дати навідну підказку. Оберіть тестовий запит вище або введіть власне запитання.</div>
+      </div>
+      <div style="display:flex;gap:8px;">
+        <input id="mentor-input" type="text" style="flex:1;padding:8px 10px;border:1px solid var(--border);border-radius:6px;" placeholder="Поставте запитання щодо Git..." onkeydown="if(event.key==='Enter') askMentorCustom()">
+        <button class="btn" onclick="askMentorCustom()">Надіслати</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. ASSESSMENT (PR 12) + ANALYTICS & PERSONALIZATION (PR 13) -->
+  <section id="tab-assessment" class="panel">
+    <div class="breadcrumbs">Курс / Оцінювання, аналітика та персоналізована підтримка</div>
+    <div class="card">
+      <h2>Підсумкове завдання (адаптоване до умов використання ШІ)</h2>
+      <p><strong>Завдання:</strong> на базі власного навчального проєкту (будь-яка ваша лабораторна з програмування) створити GitHub-репозиторій, реалізувати 2 гілки, змоделювати й вирішити конфлікт злиття, оформити Pull Request із взаємним рев'ю, а також подати:</p>
+      <ul>
+        <li>посилання на репозиторій з реальною історією комітів (<code>git log --graph</code>);</li>
+        <li>порівняння двох стратегій інтеграції (<code>merge</code> vs <code>rebase</code>) саме для вашої команди;</li>
+        <li>якщо використовувався ШІ — вказати інструмент, запит і те, що саме було перевірено чи виправлено власноруч;</li>
+        <li>коротку рефлексію (3–4 речення): яка помилка виникла під час роботи та як ви її виправили.</li>
+      </ul>
+      <table>
+        <thead><tr><th>Критерій оцінювання</th><th>Макс. балів</th><th>Що перевіряється</th></tr></thead>
+        <tbody>
+          <tr><td>Технічна коректність історії Git і PR</td><td>30</td><td>Атомарні коміти, .gitignore, реальне злиття і PR у репозиторії</td></tr>
+          <tr><td>Обґрунтування обраної стратегії (merge/rebase)</td><td>20</td><td>Аргументи прив'язані до власного проєкту, а не загальна теорія</td></tr>
+          <tr><td>Самостійний внесок і демонстрація процесу</td><td>20</td><td>Логи конфлікту до/після, відповіді на коментарі рев'юера</td></tr>
+          <tr><td>Критична перевірка й дотримання правил ШІ</td><td>15</td><td>Прозора фіксація використання ШІ або його відсутності, верифікація команд</td></tr>
+          <tr><td>Якість рефлексії та оформлення</td><td>15</td><td>Конкретний розбір власних труднощів і висновків</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="card">
+      <h2>Панель навчальної аналітики та персоналізованої підтримки</h2>
+      <div style="margin-bottom:10px;display:flex;gap:8px;flex-wrap:wrap;">
+        <button class="btn btn-sm btn-outline" onclick="setAnalyticsMode('normal')">Поточний профіль</button>
+        <button class="btn btn-sm btn-outline" onclick="setAnalyticsMode('low')">Сценарій 1: низький вхідний бал / помилки</button>
+        <button class="btn btn-sm btn-outline" onclick="setAnalyticsMode('inactive')">Сценарій 2: пауза в активності 5 днів</button>
+        <button class="btn btn-sm btn-outline" onclick="setAnalyticsMode('high')">Сценарій 3: високий бал (92%)</button>
+      </div>
+      <div class="metric-grid">
+        <div class="metric"><div class="val" id="an-comp">67%</div><div class="lbl">Завершення елементів</div></div>
+        <div class="metric"><div class="val" id="an-score">78%</div><div class="lbl">Середній бал тестів</div></div>
+        <div class="metric"><div class="val" id="an-tries">2</div><div class="lbl">Спроб у симуляторі</div></div>
+        <div class="metric"><div class="val" id="an-peer">1/1</div><div class="lbl">Участь у Code Review</div></div>
+        <div class="metric"><div class="val" id="an-days">0 дн</div><div class="lbl">Без активності</div></div>
+      </div>
+      <h3>Активні правила персоналізованої підтримки</h3>
+      <div id="pers-rules"></div>
+    </div>
+  </section>
+</main>
+<script src="app.js"></script>
+</body>
+</html>
